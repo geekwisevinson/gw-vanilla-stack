@@ -10,6 +10,7 @@ function getProfile() {
     const inputEmail = document.querySelector('#email');
     const inputAbout = document.querySelector('#about');
     const urlParams = new URLSearchParams(window.location.search);
+    const usernameH1 = document.querySelector('#username-h1');
     const validId = urlParams.get('validId');
     fetch('api-get-profile', {
         method: 'POST',
@@ -24,6 +25,7 @@ function getProfile() {
         inputName.value = res.user.name || '';
         inputEmail.value = res.user.email || '';
         inputAbout.value = res.user.about || '';
+        usernameH1.innerHTML = res.user.username;
         addListeners();
     });
 }
@@ -38,6 +40,7 @@ function postUpdate(e) {
     const inputName = document.querySelector('#name');
     const inputEmail = document.querySelector('#email');
     const inputAbout = document.querySelector('#about');
+
     const urlParams = new URLSearchParams(window.location.search);
     const validId = urlParams.get('validId');
     const body = {
@@ -53,9 +56,6 @@ function postUpdate(e) {
         },
         body: JSON.stringify(body),
     }).then( res => res.json()).then( res => {
-        console.log(res);
-        inputName.value = res.user.name || '';
-        inputEmail.value = res.user.email || '';
-        inputAbout.value = res.user.about || '';
+        window.location.href = window.location.origin + '/profile?validId=' + validId;
     });
 }

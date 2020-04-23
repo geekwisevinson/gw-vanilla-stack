@@ -42,7 +42,6 @@ app.post('/api-sign-up', (req, res) => {
     }
     const user = new User(userInfo);
     user.encryptedPassword = user.generateHash(req.body.password);
-    console.log('api-sign', req.body);
     user.save(function (errorSave) {
         User.find({
             'validIds': {$in: [req.body.username, req.body.email]}
@@ -52,7 +51,6 @@ app.post('/api-sign-up', (req, res) => {
             if (users) {
                 let message = '';
                 users.forEach((indexedUser) => {
-                    console.log(user, indexedUser);
                     if (String(indexedUser._id) !== String(user._id)) {
                         if (user.email === indexedUser.email) {
                             const inUseEmail = ' Email is in use.';
@@ -64,8 +62,6 @@ app.post('/api-sign-up', (req, res) => {
                             if (!message.includes(inUseUsername))
                                 message += inUseUsername;
                         }
-                    } else {
-                        console.log('is user')
                     }
                 });
 
@@ -89,7 +85,6 @@ app.post('/api-sign-up', (req, res) => {
             }
         }).catch(errorFind => {
             if (errorFind) {
-                console.log(errorFind);
                 return res.json({
                     message: 'error',
                     error: errorFind,
@@ -102,10 +97,6 @@ app.post('/api-sign-up', (req, res) => {
 });
 
 app.post('/api-login', (req, res) => {
-
-    console.log('body', req.body);
-
-
     User.find({
         'validIds': {$in: [req.body.username, req.body.email]}
     }).then(users => {
@@ -115,9 +106,6 @@ app.post('/api-login', (req, res) => {
                 success: false,
             });
         }
-
-        console.log(users);
-
         if (users[0].validPassword(req.body.password)) {
             return res.json({
                 message: "That is the correct password!",
@@ -137,7 +125,6 @@ app.post('/api-login', (req, res) => {
 
 
 app.post('/api-get-profile', (req, res) => {
-    console.log('validId', req.body)
     User.find({
         'validIds': {$in: [req.body.validId]}
     }).then(users => {
@@ -158,9 +145,6 @@ app.post('/api-get-profile', (req, res) => {
 });
 
 app.post('/api-edit-profile-submit', (req, res) => {
-    console.log('req.body');
-    console.log(req.body);
-    console.log(res);
     User.findOneAndUpdate({
         'validIds': {$in: [req.body.username, req.body.email]}
     }, req.body, {
@@ -168,7 +152,6 @@ app.post('/api-edit-profile-submit', (req, res) => {
         new: true,
     })
         .then(result => {
-            console.log(result);
             res.status(201).json({
                 user: result,
                 message: "found user.",
@@ -176,7 +159,6 @@ app.post('/api-edit-profile-submit', (req, res) => {
             });
         })
         .catch(err => {
-            console.log(err);
             res.status(500).json({
                 error: err,
                 message: "Error",
@@ -188,11 +170,7 @@ app.post('/api-edit-profile-submit', (req, res) => {
 });
 
 app.get('/api-get-users', (req, res) => {
-    console.log('req.body');
-    console.log(req.body);
-    console.log(res);
     User.find({}).then(result => {
-        console.log(result);
         res.status(201).json({
             users: result,
             message: "found users.",
@@ -200,7 +178,6 @@ app.get('/api-get-users', (req, res) => {
         });
     })
         .catch(err => {
-            console.log(err);
             res.status(500).json({
                 error: err,
                 message: "Error",
@@ -211,8 +188,6 @@ app.get('/api-get-users', (req, res) => {
 
 
 app.post('/api-add-friend', (req, res) => {
-    console.log('req.body');
-    console.log(req.body);
     User.find({
         'validIds': {$in: [req.body.myValidId]}
     }).then(users => {
@@ -243,8 +218,6 @@ app.post('/api-add-friend', (req, res) => {
 });
 
 app.post('/api-get-friends', (req, res) => {
-    console.log('req.body');
-    console.log(req.body);
     User.find({
         'validIds': {$in: [req.body.validId]}
     }).populate('friends').then(users => {
@@ -282,7 +255,6 @@ app.post('/api-get-isFriend', (req, res) => {
 });
 
 app.post('/api-get-conversation', (req, res) => {
-    console.log(req.body);
     const findMine = User.find({
         'validIds': {$in: [req.body.myValidId]}
     });
@@ -327,7 +299,6 @@ app.post('/api-add-chat', (req, res) => {
         findYours,
     ]
     ).then( result => {
-        console.log('result.all', result);
         const mine = result[0][0];
         const yours = result[1][0];
         if (mine && yours) {

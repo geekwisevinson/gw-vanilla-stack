@@ -6,13 +6,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if(validId) {
         getFriends(validId);
-        document.querySelector('.title h1').innerHTML = `<span class="high-light"> ${validId}</span>'s Friends List`;
+        document.querySelector('.title h1').innerHTML = `<span class="high-light username"> ${validId}</span>'s Friends List`;
     } else {
         getUsers();
     }
 });
 
 function getUsers() {
+    const myUser = window.localStorage.getItem('myUser');
     fetch('api-get-users', {
         method: 'GET',
     }).then( res => res.json()).then( res => {
@@ -25,6 +26,9 @@ function getUsers() {
                 <span class="username">${user.username}</span>
                 <span class="status">${user.email}</span>
             </li>`;
+            if (user.username === JSON.parse(myUser).username) {
+                li.classList.add('high-light')
+            }
             usersUl.appendChild(li);
             li.addEventListener('click', function () {
                 window.location.href = window.location.origin + '/profile?validId=' + user.username;

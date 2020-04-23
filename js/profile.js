@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('run');
     const myUser = window.localStorage.getItem('myUser');
     const elementEditLink = document.querySelector('#edit');
-    const elementUsername = document.querySelector('h1');
+    const elementUsername = document.querySelector('#username-h1');
     const elementName = document.querySelector('.name');
     const elementEmail = document.querySelector('.email');
     const elementInfo = document.querySelector('.info');
@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }).then(res => res.json()).then(res => {
         elementEmail.innerText = res.user.email;
         elementUsername.innerText = res.user.username;
+        elementName.innerHTML = res.user.name || 'name not set';
+        elementInfo.innerHTML = res.user.about || 'about not set';
 
         if (myUser && JSON.parse(myUser).email === res.user.email) {
             document.querySelector('#chat-li').style.display = 'none';

@@ -8,7 +8,6 @@
     --my-profile-background: var(--my-grey);
     --my-high-light: chartreuse;
 }
-
 .red {
     color: var(--my-dark-red)
 }
@@ -18,11 +17,9 @@
 .block {
     display: block;
 }
-
 .no-wrap {
     white-space: nowrap;
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -61,8 +58,10 @@ section > div {
     justify-content: center;
     height: 100%;
     padding: 0 100px;
+    margin:0;
     background:  radial-gradient(circle farthest-side, var(--my-blue), rgba(56, 121, 137, 0.9), rgba(56, 121, 137, 0.6), rgba(100, 200, 200, 0.4), transparent);
     text-align: center;
+    overflow: auto;
 }
 ul {
     list-style: none;
@@ -203,13 +202,14 @@ h1, h2, p {
 }
 .users-section .username {
     text-align: left;
+    text-transform: capitalize;
 }
 
 .users-section .status {
     text-align: right;
     font-size: xx-large;
 }
-.users-section .title {
+.title {
     background:  radial-gradient(circle farthest-side, var(--my-blue), rgba(56, 121, 137, 0.9), rgba(56, 121, 137, 0.6), rgba(100, 200, 200, 0.4), transparent);
 }
 
@@ -224,7 +224,6 @@ h1, h2, p {
 
 .high-light {
     color: var(--my-high-light);
-    text-transform: capitalize;
 }
 
 .my-chat {
@@ -283,62 +282,29 @@ nav .disabled.disabled.disabled.disabled a {
     border-radius: 30px;
 }
 
-.nav ul {
-    list-style: none;
-    background-color: #444;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-.nav li {
-    font-family: 'Oswald', sans-serif;
-    font-size: .8em;
-    height: 40px;
-    border-bottom: 1px solid #888;
-}
 
-.nav a {
-    text-decoration: none;
-    color: #fff;
+.nav .anchors {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    width: 100%;
+    background-image: linear-gradient(to right, transparent 0%, transparent 70%, rgba(82,91,86,.8) 90%, rgba(40,45,43,.7) 95%);
+}
+.anchors a {
+    margin: 0 5px;
     display: block;
-    transition: .3s background-color;
+    color: var(--my-white);
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+.anchors a:hover {
+    color: white;
+}
+.anchors a:active {
+    color: var(--my-high-light)
 }
 
-.nav a:hover {
-    background-color: #005f5f;
-}
-
-.nav a.active {
-    background-color: #fff;
-    color: #444;
-    cursor: default;
-}
-
-@media screen and (min-width: 600px) {
-    .nav li {
-        width: 120px;
-        border-bottom: none;
-        height: 50px;
-        font-size: .8em;
-    }
-
-    /* Option 1 - Display Inline */
-    .nav li {
-        display: inline-block;
-        margin-right: -4px;
-    }
-
-    /* Options 2 - Float
-    .nav li {
-      float: left;
-    }
-    .nav ul {
-      overflow: auto;
-      width: 600px;
-      margin: 0 auto;
-    }
-    .nav {
-      background-color: #444;
-    }
-    */
+#username-h1 {
+    text-transform: capitalize;
 }
