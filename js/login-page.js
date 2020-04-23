@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
     });
-    elementSignUpButton.addEventListener('click', function () {
+    elementSignUpButton.addEventListener('click', function (e) {
+        e.preventDefault();
         console.log(elementsSignUpInputs);
         const email = elementsSignUpInputs[0].value;
         const username = elementsSignUpInputs[1].value;
