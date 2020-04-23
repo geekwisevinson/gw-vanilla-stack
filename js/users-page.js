@@ -20,6 +20,7 @@ function getUsers() {
         console.log(res);
         const usersUl = document.querySelector('#users-ul');
         usersUl.innerHTML = '';
+        let mine = null;
         res.users.forEach( user => {
             const li = document.createElement('li');
             li.innerHTML = `    <li class="user-card">
@@ -27,13 +28,16 @@ function getUsers() {
                 <span class="status">${user.email}</span>
             </li>`;
             if (user.username === JSON.parse(myUser).username) {
-                li.classList.add('high-light')
+                mine = li.classList.add('high-light')
             }
             usersUl.appendChild(li);
             li.addEventListener('click', function () {
                 window.location.href = window.location.origin + '/profile?validId=' + user.username;
             })
         });
+        if (mine) {
+            usersUl.appendChild(mine);
+        }
     });
 }
 
