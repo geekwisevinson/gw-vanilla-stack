@@ -1,0 +1,344 @@
+:root {
+    --my-red: red;
+    --my-second-red: #ce0606;
+    --my-dark-red: darkred;
+    --my-blue: #387989;
+    --my-white: antiquewhite;
+    --my-grey: linear-gradient(90deg, rgba(164,151,142,1) 0%, rgba(82,91,86,1) 49%, rgba(164,151,142,1) 100%);
+    --my-profile-background: var(--my-grey);
+    --my-high-light: chartreuse;
+}
+
+.red {
+    color: var(--my-dark-red)
+}
+.white {
+    color: var(--my-white)
+}
+.block {
+    display: block;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 30pt;
+}
+main {
+    margin: 0 auto;
+}
+
+section {
+    min-height: 100vh;
+    background-size: cover;
+}
+section.banner {
+    background-image: url("https://source.unsplash.com/featured/?coworkers,family");
+}
+section.login {
+    background-image: url("https://source.unsplash.com/featured/?security");
+}
+section.sign-up {
+    background-image: url("https://source.unsplash.com/featured/?autograph,write,pen, pencil");
+}
+section.profile {
+    background-image: url("https://source.unsplash.com/featured/?motherboard,computerchip");
+}
+section.users-section {
+    background-image: url("https://source.unsplash.com/featured/?lobby");
+}
+
+section.chat-page {
+    background-image: url("https://source.unsplash.com/featured/?meeting");
+}
+section > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 100px;
+    background:  radial-gradient(circle farthest-side, var(--my-blue), rgba(56, 121, 137, 0.9), rgba(56, 121, 137, 0.6), rgba(100, 200, 200, 0.4), transparent);
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+nav > ul {
+    display: flex;
+    justify-content: center;
+
+}
+nav a, button {
+    background-color: var(--my-red);
+    box-shadow: 0 5px 0 var(--my-dark-red);
+    color: var(--my-white);
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 10px;
+    border-radius: 10px;
+}
+nav a:hover, button:hover {
+    background-color: var(--my-second-red);
+    cursor: pointer;
+}
+nav a:active {
+    box-shadow: none;
+    top: 5px;
+}
+form {
+    width: 400px;
+    background:  radial-gradient(circle farthest-side, var(--my-second-red), var(--my-dark-red));
+    padding: 1em;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+form label{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    color: var(--my-white)
+}
+footer {
+    background-image: url("https://source.unsplash.com/featured/?syntax");
+    padding: -1px;
+    background-size: cover;
+}
+footer > div {
+    color: var(--my-white);
+    height: 100%;
+    padding: 1px 100px;
+    background:  radial-gradient(ellipse farthest-corner at 45px 45px, rgba(56, 121, 137, 0.8) 0%, rgba(144, 0, 0, 0.8) );;
+}
+input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin-bottom: .4em;
+}
+h1, h2, p {
+    text-shadow: 0px 1px darkgrey;
+    font-weight: bold;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+.profile-background {
+
+    flex: 1;
+    background-image: linear-gradient(to left, rgba(164,151,142,.7) 0%, rgba(82,91,86,.8) 90%, rgba(40,45,43,.7) 95%);
+    padding: 10px;
+    border-bottom-left-radius: 10%;
+    border-top-left-radius: 10%;
+}
+.profile-background-right {
+    flex: 1;
+
+    background-image: linear-gradient(to right, rgba(164,151,142,.7) 0%, rgba(82,91,86,.8) 90%, rgba(40,45,43,.7) 95%);
+    border-bottom-right-radius: 10vw;
+    border-top-right-radius: 10vw;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.text-align-left {
+    text-align: left;
+}
+.profile-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+    margin-left: auto;
+}
+.profile-background a{
+    display: inline-block;
+    margin: 10px;
+}
+.profile > div  {
+    display: block;
+}
+.profile-actions  {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.chat-page li, .users-section li {
+    font-size: larger;
+    border-radius: 10px;
+    margin: 20px;
+    background-image: linear-gradient(to right, rgba(164,151,142,.7) 0%, rgba(82,91,86,.8) 90%, rgba(40,45,43,.7) 95%);
+}
+
+.users-section ul {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+.users-section .user-card {
+    display: flex;
+    justify-content: space-between;
+}
+.users-section .username {
+    text-align: left;
+}
+
+.users-section .status {
+    text-align: right;
+    font-size: xx-large;
+}
+.users-section .title {
+    background:  radial-gradient(circle farthest-side, var(--my-blue), rgba(56, 121, 137, 0.9), rgba(56, 121, 137, 0.6), rgba(100, 200, 200, 0.4), transparent);
+}
+
+.chat-page ul {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+.high-light {
+    color: var(--my-high-light);
+    text-transform: capitalize;
+}
+
+.my-chat {
+    color: var(--my-high-light);
+}
+
+.your-chat {
+    text-align: center;
+    color: var(--my-white);
+    margin-left: auto;
+}
+
+nav .disabled.disabled.disabled.disabled a {
+    color: darkslategray;
+    background-color: grey;
+    border-color: darkgrey;
+
+}
+
+
+.child-no-margin > *  {
+    margin: 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.chat-name {
+    color: var(--my-red)
+}
+
+.chat-bubble {
+    width: 50%;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.chat-page #chat-ul {
+    margin-top:0;
+}
+.chat-page #username {
+    margin-bottom: 0;
+}
+
+.my-name {
+    color: var(--my-high-light);
+}
+.your-name {
+    color: var(--my-white);
+}
+
+.logout {
+    background-color: var(--my-white);
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.nav ul {
+    list-style: none;
+    background-color: #444;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+.nav li {
+    font-family: 'Oswald', sans-serif;
+    font-size: .8em;
+    height: 40px;
+    border-bottom: 1px solid #888;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: .3s background-color;
+}
+
+.nav a:hover {
+    background-color: #005f5f;
+}
+
+.nav a.active {
+    background-color: #fff;
+    color: #444;
+    cursor: default;
+}
+
+@media screen and (min-width: 600px) {
+    .nav li {
+        width: 120px;
+        border-bottom: none;
+        height: 50px;
+        font-size: .8em;
+    }
+
+    /* Option 1 - Display Inline */
+    .nav li {
+        display: inline-block;
+        margin-right: -4px;
+    }
+
+    /* Options 2 - Float
+    .nav li {
+      float: left;
+    }
+    .nav ul {
+      overflow: auto;
+      width: 600px;
+      margin: 0 auto;
+    }
+    .nav {
+      background-color: #444;
+    }
+    */
+}
