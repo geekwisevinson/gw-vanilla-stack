@@ -186,9 +186,12 @@ h1, h2, p {
     background-image: linear-gradient(to right, rgba(164,151,142,.7) 0%, rgba(82,91,86,.8) 90%, rgba(40,45,43,.7) 95%);
 }
 
+.users-section > div {
+    justify-content: flex-start;
+}
+
 .users-section ul {
     overflow: auto;
-    height: 100%;
     width: 100%;
     margin-left: 0;
     padding: 0;
@@ -209,8 +212,15 @@ h1, h2, p {
     text-align: right;
     font-size: xx-large;
 }
+
+
+
 .title {
     background:  radial-gradient(circle farthest-side, var(--my-blue), rgba(56, 121, 137, 0.9), rgba(56, 121, 137, 0.6), rgba(100, 200, 200, 0.4), transparent);
+}
+
+.chat-page > div {
+    justify-content: flex-start;
 }
 
 .chat-page ul {

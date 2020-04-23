@@ -28,7 +28,8 @@ function getUsers() {
                 <span class="status">${user.email}</span>
             </li>`;
             if (user.username === JSON.parse(myUser).username) {
-                mine = li.classList.add('high-light')
+                li.classList.add('high-light');
+                mine = li;
             }
             usersUl.appendChild(li);
             li.addEventListener('click', function () {
@@ -36,7 +37,7 @@ function getUsers() {
             })
         });
         if (mine) {
-            usersUl.appendChild(mine);
+            usersUl.prepend(mine);
         }
     });
 }
